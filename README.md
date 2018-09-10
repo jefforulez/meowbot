@@ -3,6 +3,8 @@
 
 ![meowbot irl](./meowbot.jpg)
 
-meow meow.  __meow meow__ meow.  meow!
+meow meow.  __meow meow__ meow.
 
-_purrrr..._
+meow!
+
+_purrrr_
