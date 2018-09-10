@@ -1,0 +1,29 @@
+{
+  "name": "meowbot",
+  "version": "1.0.0",
+  "description": "meowbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start-dev": "BOT_RTM_LOG_LEVEL=debug node index.js",
+    "eslint": "./node_modules/.bin/eslint -c ../.eslintrc --ignore-path ../.gitignore .",
+    "eslint-fix": "./node_modules/.bin/eslint -c ../.eslintrc --ignore-path ../.gitignore --fix ."
+  },
+  "author": "jefforulez",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/client": "^4.6.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "redis": "^2.7.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "url-parse": "^1.1.9",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
