@@ -67,14 +67,11 @@ redisClient.on( 'error', ( err ) => {
 
 var request = require('request') ;
 
-let meow_hostname = 'meowbot.local' ;
-let meow_milliseconds = '3000' ;
-
 function meow()
 {
   logger.info( 'meow()' ) ;
 
-  let url = `http://${meow_hostname}/arduino/meow/${meow_milliseconds}` ;
+  let url = `http://${BOT_MEOW_HOSTNAME}/arduino/meow/${BOT_MEOW_MILLISECONDS}` ;
 
   request(
     url,
@@ -117,20 +114,7 @@ rtm.on( 'connected', () => {
 } ) ;
 
 
-/*
-{
-    "type": "reaction_added",
-    "user": "U024BE7LH",
-    "reaction": "thumbsup",
-    "item_user": "U0G9QF9C6",
-    "item": {
-        "type": "message",
-        "channel": "C0G9QF9GZ",
-        "ts": "1360782400.498405"
-    },
-    "event_ts": "1360782804.083113"
-}
-*/
+
 rtm.on( 'reaction_added', ( message ) => {
   logger.info( 'rtm.on( reaction_added ), message:', message ) ;
 
@@ -170,15 +154,7 @@ rtm.on( 'reaction_added', ( message ) => {
 } ) ;
 
 
-/*
-{
-    "type": "message",
-    "channel": "C2147483705",
-    "user": "U2147483697",
-    "text": "Hello world",
-    "ts": "1355517523.000005"
-}
-*/
+
 rtm.on( 'message', ( message ) => {
   logger.info( 'rtm.on( message ), message:', JSON.stringify( message ) ) ;
 
@@ -219,7 +195,7 @@ rtm.on( 'message', ( message ) => {
         break ;
 
       case 'status' :
-        rtm.sendMessage( `\`\`\`meow_hostname: ${meow_hostname}\nmeow_milliseconds: ${meow_milliseconds}\`\`\``, message.channel ) ;
+        rtm.sendMessage( `\`\`\`meow_hostname: ${BOT_MEOW_HOSTNAME}\nmeow_milliseconds: ${BOT_MEOW_MILLISECONDS}\`\`\``, message.channel ) ;
         break ;
 
       case 'help' :
