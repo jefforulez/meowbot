@@ -1,10 +1,6 @@
 
 ## meowbot
 
-![meowbot irl](./meowbot.jpg)
+![meowbot irl](./meowbot.gif)
 
-meow meow.  __meow meow__ meow.
-
-meow!
-
-_purrrr_
+meow meow.  __meow meow__ meow.  meow!
