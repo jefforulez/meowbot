@@ -62,10 +62,40 @@ void process(BridgeClient client) {
     return ;
   }
 
+  if ( command == "meowWithSound" )
+  {
+    int ms = client.parseInt();
+    if ( ms < 1000 ) {
+       ms = MeowDefaultMilliseconds ;
+    }
+
+    meowWithSound( ms ) ;
+
+    client.print(F("meowWithSound "));
+    client.println( ms ) ;
+
+    return ;
+  }
+
   client.println(F("usage: /arduino/meow/$MILLISECONDS"));
 }
 
 void meow( int ms ) {
+
+  int blink_delay = 100 ;
+  int blinks = ms / blink_delay ;
+
+  for ( int i = 0 ; i < blinks ; ++i )
+  {
+    digitalWrite( MeowEyes, HIGH ) ;
+    delay( blink_delay / 2 ) ;
+    digitalWrite( MeowEyes, LOW ) ;
+    delay( blink_delay / 2 ) ;
+  }
+
+}
+
+void meowWithSound( int ms ) {
 
   int blink_delay = 100 ;
   int blinks = ms / blink_delay ;
@@ -93,3 +123,4 @@ void meow( int ms ) {
   }
 
 }
+

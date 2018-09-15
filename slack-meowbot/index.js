@@ -84,6 +84,23 @@ function meow()
   );
 }
 
+function meowWithSound()
+{
+  logger.info( 'meowWithSound()' ) ;
+
+  let url = `http://${BOT_MEOW_HOSTNAME}/arduino/meowWithSound/${BOT_MEOW_MILLISECONDS}` ;
+
+  request(
+    url,
+    ( error, response, body ) => {
+      logger.info( `meow(), url: ${url}` ) ;
+      logger.debug( 'error:', error ) ;
+      logger.debug( 'statusCode:', response && response.statusCode ) ;
+      logger.debug( 'body:', body ) ;
+    }
+  );
+}
+
 //
 // rtm methods
 //
@@ -128,6 +145,7 @@ rtm.on( 'reaction_added', ( message ) => {
   let r = message.reaction ;
 
   if (
+    r === "tiger" ||
     r === "cat" ||
     r === "cat2" ||
     r === "crying_cat_face" ||
@@ -148,7 +166,10 @@ rtm.on( 'reaction_added', ( message ) => {
       .catch( (error) => logger.error( error ) )
       ;
 
-    meow() ;
+    ( r === "tiger" )
+      ? meowWithSound()
+      : meow()
+      ;
   }
 
 } ) ;
@@ -167,7 +188,7 @@ rtm.on( 'message', ( message ) => {
     let body = {
       type : 'message',
       channel : `${message.channel}`,
-      text : `hello! tell me to \`meow\` and i'll sing you a song`,
+      text : `hello! ask me to \`meow\` and maybe i'll sing you a song`
     };
 
     rtm.addOutgoingEvent( true, 'message', body )
